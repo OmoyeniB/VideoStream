@@ -19,6 +19,7 @@
 - SDWebImage
 - Snapkit
 - RealmSwift
+- ProgressHud
 
 #Architecture Used:
 - MVVM Architecture was implemented with adherance to the DRY principle, creating extensions and helpers where needed. to ensure separation of concerns and proper decoupling of code around the application.
