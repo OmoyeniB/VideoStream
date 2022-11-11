@@ -10,14 +10,12 @@ import RealmSwift
 
 final class PersistenceStore: PersistenceProtocol {
     
-    fileprivate let configuration = Realm.Configuration()
     fileprivate let realm = try! Realm()
     
     func save<T: Object>(items: T) {
         do {
             try realm.write({
                 realm.add(items)
-                
             })
         } catch {
             print(error.localizedDescription)
