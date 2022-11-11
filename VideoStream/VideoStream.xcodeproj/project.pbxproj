@@ -34,9 +34,7 @@
 		5887AF69291C7E1F003C75F7 /* UsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5887AF68291C7E1F003C75F7 /* UsersModel.swift */; };
 		58998D68291DE3EC00C532B0 /*  FetchDataFromRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58998D67291DE3EC00C532B0 /*  FetchDataFromRealm.swift */; };
 		58998D6E291E0FAC00C532B0 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 58998D6D291E0FAC00C532B0 /* ProgressHUD */; };
-		58998D71291E6BD600C532B0 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 58998D70291E6BD600C532B0 /* Reachability */; };
 		58AF1E4C291D010500B54C69 /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58AF1E4B291D010500B54C69 /* ColorAssets.xcassets */; };
-		58AF1E4F291D4FE100B54C69 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 58AF1E4E291D4FE100B54C69 /* IQKeyboardManagerSwift */; };
 		58AF1E52291DC84300B54C69 /* PersistenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF1E51291DC84300B54C69 /* PersistenceProtocol.swift */; };
 		58AF1E55291DC8B100B54C69 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 58AF1E54291DC8B100B54C69 /* RealmSwift */; };
 		58AF1E57291DC8ED00B54C69 /* PersistedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF1E56291DC8ED00B54C69 /* PersistedObject.swift */; };
@@ -82,11 +80,9 @@
 				58998D6E291E0FAC00C532B0 /* ProgressHUD in Frameworks */,
 				5887AF48291AF250003C75F7 /* FirebaseAnalytics in Frameworks */,
 				58AF1E55291DC8B100B54C69 /* RealmSwift in Frameworks */,
-				58998D71291E6BD600C532B0 /* Reachability in Frameworks */,
 				5887AF51291BA74F003C75F7 /* SDWebImage in Frameworks */,
 				5887AF4C291AF250003C75F7 /* FirebaseFirestore in Frameworks */,
 				5887AF67291C1909003C75F7 /* SnapKit in Frameworks */,
-				58AF1E4F291D4FE100B54C69 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,10 +232,8 @@
 				5887AF4B291AF250003C75F7 /* FirebaseFirestore */,
 				5887AF50291BA74F003C75F7 /* SDWebImage */,
 				5887AF66291C1909003C75F7 /* SnapKit */,
-				58AF1E4E291D4FE100B54C69 /* IQKeyboardManagerSwift */,
 				58AF1E54291DC8B100B54C69 /* RealmSwift */,
 				58998D6D291E0FAC00C532B0 /* ProgressHUD */,
-				58998D70291E6BD600C532B0 /* Reachability */,
 			);
 			productName = VideoStream;
 			productReference = 5841D3B72919077D00AEA726 /* VideoStream.app */;
@@ -273,10 +267,8 @@
 				5887AF46291AF250003C75F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				5887AF4F291BA74F003C75F7 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				5887AF65291C1909003C75F7 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				58AF1E4D291D4FE100B54C69 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				58AF1E53291DC8B100B54C69 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				58998D6C291E0FAC00C532B0 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
-				58998D6F291E6BD500C532B0 /* XCRemoteSwiftPackageReference "Reachability" */,
 			);
 			productRefGroup = 5841D3B82919077D00AEA726 /* Products */;
 			projectDirPath = "";
@@ -582,22 +574,6 @@
 				minimumVersion = 13.0.0;
 			};
 		};
-		58998D6F291E6BD500C532B0 /* XCRemoteSwiftPackageReference "Reachability" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		58AF1E4D291D4FE100B54C69 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		58AF1E53291DC8B100B54C69 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
@@ -638,16 +614,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 58998D6C291E0FAC00C532B0 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
 			productName = ProgressHUD;
-		};
-		58998D70291E6BD600C532B0 /* Reachability */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 58998D6F291E6BD500C532B0 /* XCRemoteSwiftPackageReference "Reachability" */;
-			productName = Reachability;
-		};
-		58AF1E4E291D4FE100B54C69 /* IQKeyboardManagerSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 58AF1E4D291D4FE100B54C69 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
-			productName = IQKeyboardManagerSwift;
 		};
 		58AF1E54291DC8B100B54C69 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;

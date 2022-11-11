@@ -7,7 +7,6 @@
 
 import UIKit
 import Firebase
-import IQKeyboardManagerSwift
 
 @available(iOS 13.0, *)
 @main
@@ -18,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         let window = UIWindow(frame: UIScreen.main.bounds)
         setUpRootViewController(window: window)
-        handleKeyboardDismissal()
         return true
     }
 
@@ -31,11 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
     }
     
-    func handleKeyboardDismissal() {
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.keyboardAppearance = .default
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-    }
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
