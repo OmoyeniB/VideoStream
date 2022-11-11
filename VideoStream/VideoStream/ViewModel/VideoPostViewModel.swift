@@ -13,6 +13,7 @@ final class VideoPostViewModel {
     let fetchDataFromRealm = FetchDataFromRealm().data
     var persitedData = [PersistedObject]()
     var completion: ((Result<[PersistedObject], Error>)-> Void)?
+    
     func saveDataToRealm(data: [VideoModel]) {
         for i in data {
             let itemsTosave = PersistedObject()
@@ -57,15 +58,25 @@ final class VideoPostViewModel {
         })
     }
     
-    func animateHeader(stackViewHeight: NSLayoutConstraint, headerHeight: NSLayoutConstraint, profileImageHeight: NSLayoutConstraint, view: UIView) {
+    func animateHeader(headerHeight: NSLayoutConstraint, profileImageHeight: NSLayoutConstraint, view: UIView) {
         DispatchQueue.main.async {
-            headerHeight.constant = 160
-            stackViewHeight.constant = 88
-            profileImageHeight.constant = 60
+            
             UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+                headerHeight.constant = 160
+                profileImageHeight.constant = 60
                view.layoutIfNeeded()
             }, completion: nil)
         }
     }
     
+    func animateHeaderViewToZero(headerHeight: NSLayoutConstraint, profileImageHeight: NSLayoutConstraint, view: UIView) {
+        DispatchQueue.main.async {
+            
+            UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+                headerHeight.constant = 0
+                profileImageHeight.constant = 0
+               view.layoutIfNeeded()
+            }, completion: nil)
+        }
+    }
 }
