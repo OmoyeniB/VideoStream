@@ -11,6 +11,7 @@
 - implemented Dark mode and light mode enabled
 - avoided strong retain cycle by making self weak and unwrapping where necessary.
 - automatically cached images with sdwebImage
+- scrolling animates the header view height
 
 
 #Dependencies Used:
@@ -47,3 +48,12 @@ $ cd Github Search
 
 - Click on the play button at the top left corner to build and run the project Architecture
 
+# Screenshots
+- dark mode
+/Users/sharon-omoyeni/Desktop/Simulator Screen Shot - iPhone 14 Pro Max - 2022-11-11 at 04.18.11.png
+
+- light mode
+/Users/sharon-omoyeni/Desktop/Simulator Screen Shot - iPhone 14 Pro Max - 2022-11-11 at 04.18.32.png
+
+- animated header
+/Users/sharon-omoyeni/Desktop/Simulator Screen Recording - iPhone 14 Pro Max - 2022-11-11 at 03.46.27.mp4
