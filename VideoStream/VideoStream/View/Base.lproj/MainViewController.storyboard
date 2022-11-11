@@ -65,11 +65,11 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2x2-ma-uKa">
-                                <rect key="frame" x="25" y="297" width="340" height="527"/>
+                                <rect key="frame" x="25" y="285" width="340" height="539"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ey1-IZ-cfz" customClass="UISegmentedView" customModule="VideoStream" customModuleProvider="target">
-                                <rect key="frame" x="20" y="239" width="350" height="32"/>
+                                <rect key="frame" x="20" y="227" width="350" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="aJg-Sy-16g"/>
                                 </constraints>
@@ -83,7 +83,7 @@
                         <color key="backgroundColor" name="WhiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ey1-IZ-cfz" secondAttribute="trailing" constant="20" id="JVb-K6-U9R"/>
-                            <constraint firstItem="ey1-IZ-cfz" firstAttribute="top" secondItem="Pfw-Mc-GsM" secondAttribute="bottom" constant="22" id="LZB-zv-HsM"/>
+                            <constraint firstItem="ey1-IZ-cfz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="180" id="LZB-zv-HsM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Pfw-Mc-GsM" secondAttribute="trailing" constant="20" id="NGw-Tf-Hog"/>
                             <constraint firstItem="Pfw-Mc-GsM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Oli-4B-J8Z"/>
                             <constraint firstItem="2x2-ma-uKa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="Ufo-O9-rZJ"/>
@@ -99,6 +99,7 @@
                         <outlet property="headerView" destination="Pfw-Mc-GsM" id="i5V-OB-aXw"/>
                         <outlet property="profileImageHeight" destination="NLk-d2-SPN" id="XmI-2W-8sD"/>
                         <outlet property="segmentedControl" destination="ey1-IZ-cfz" id="MIr-Um-Owp"/>
+                        <outlet property="segmentedControlTopConstraints" destination="LZB-zv-HsM" id="a4Y-XA-xeO"/>
                         <outlet property="stackView" destination="1GS-ae-f4U" id="tQy-Mk-jAw"/>
                         <outlet property="tableView" destination="2x2-ma-uKa" id="yLt-PM-GYO"/>
                         <outlet property="userName" destination="QuL-GI-g7h" id="5K2-EF-5T4"/>

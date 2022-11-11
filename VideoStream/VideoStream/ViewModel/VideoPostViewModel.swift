@@ -58,23 +58,25 @@ final class VideoPostViewModel {
         })
     }
     
-    func animateHeader(headerHeight: NSLayoutConstraint, profileImageHeight: NSLayoutConstraint, view: UIView) {
+    func animateHeader(headerView: UIView, usersProfileImage: UIImageView, segmentedControlTopConstraints: NSLayoutConstraint, view: UIView) {
         DispatchQueue.main.async {
             
             UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
-                headerHeight.constant = 160
-                profileImageHeight.constant = 60
+                headerView.isHidden = false
+                usersProfileImage.isHidden = false
+                segmentedControlTopConstraints.constant = 180
                view.layoutIfNeeded()
             }, completion: nil)
         }
     }
     
-    func animateHeaderViewToZero(headerHeight: NSLayoutConstraint, profileImageHeight: NSLayoutConstraint, view: UIView) {
+    func animateHeaderViewToZero(headerView: UIView, usersProfileImage: UIImageView, segmentedControlTopConstraints: NSLayoutConstraint, view: UIView) {
         DispatchQueue.main.async {
             
             UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
-                headerHeight.constant = 0
-                profileImageHeight.constant = 0
+                headerView.isHidden = true
+                usersProfileImage.isHidden = true
+                segmentedControlTopConstraints.constant = 0
                view.layoutIfNeeded()
             }, completion: nil)
         }

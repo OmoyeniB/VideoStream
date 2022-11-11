@@ -164,14 +164,25 @@ extension MainViewController: UITableViewDelegate {
         
         if scrollView == tableView {
             if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0 {
-                viewModel.animateHeaderViewToZero(headerHeight: headerHeight, profileImageHeight: profileImageHeight, view: view)
+                viewModel.animateHeaderViewToZero(headerView: headerView, usersProfileImage: usersProfileImage, segmentedControlTopConstraints: segmentedControlTopConstraints, view: view)
                 
             } else {
-                viewModel.animateHeader(headerHeight: headerHeight, profileImageHeight: profileImageHeight, view: self.view)
+                viewModel.animateHeader(headerView: headerView, usersProfileImage: usersProfileImage, segmentedControlTopConstraints: segmentedControlTopConstraints, view: view)
             }
         }
     }
     
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if headerView.isHidden == false {
+            viewModel.animateHeader(headerView: headerView, usersProfileImage: usersProfileImage, segmentedControlTopConstraints: segmentedControlTopConstraints, view: view)
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if headerView.isHidden == false {
+            viewModel.animateHeader(headerView: headerView, usersProfileImage: usersProfileImage, segmentedControlTopConstraints: segmentedControlTopConstraints, view: view)
+        }
+    }
 }
 
 extension MainViewController: AudioPlayerManagerDelegate {
