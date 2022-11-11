@@ -74,34 +74,6 @@ class FirebaseManager {
         }
     }
     
-    func updateUserProfile(completionHandler: @escaping (Result<UsersModel, Error>) -> Void) {
-//        
-//            data_base.collection("users").getDocuments() { [weak self] (snapshot, error) in
-//                if let error = error {
-//                    completionHandler(.failure(error))
-//                } else {
-//                    let documents = snapshot?.documents
-//                    if let document = documents {
-//                        for documents in document {
-//                            let data = documents
-//                            
-//                            let photo = data["photo"] as? String ?? ""
-//                            data["bio"] as? String = usersModel?.bio
-//                            let name = data["name"] as? String ?? ""
-//                            let id = data["userId"] as? String ?? ""
-//                            let username = data["username"] as? String ?? ""
-//                            let usermodel = UsersModel(photo: photo, bio: bio, name: name, id: id, username: username)
-//                            self?.usersModel = usermodel
-//                            
-//                        }
-//                        
-//                        DispatchQueue.main.async {
-//                            if let self = self, let usersModel = self.usersModel {
-//                                completionHandler(.success(usersModel))
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-    }
+  
+    
 }
