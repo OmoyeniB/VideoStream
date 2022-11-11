@@ -48,4 +48,10 @@ extension UIViewController {
         return menuBarItem
     }
 
+    func configureSegmentedControl(_ segmentedControl: UISegmentedView) {
+        segmentedControl.frame = CGRect(x: segmentedControl.frame.minX, y:
+                                            segmentedControl.frame.minY,
+                                        width: segmentedControl.frame.width, height: 30)
+        segmentedControl.highlightSelectedSegment()
+    }
 }
