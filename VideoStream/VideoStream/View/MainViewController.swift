@@ -66,6 +66,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         segmentedControl.isEnabled = false
+        setUpTableView()
         viewModel.configureSegmentedControl(segmentedControl)
         segmentedControl.setUnderLinePosition()
         fetchDataFromFireBase()
@@ -89,9 +90,119 @@ class MainViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = leftNavItem
     }
     
+    func fetchDataFromFireBase() {
+        viewModel.fetchDataServiceClass(completion: { [weak self] result in
+            if let self = self {
+                switch result {
+                case .success(let data):
+                    _ = data.map({data in
+                        if data.isVideo == true {
+                            self.filteredVideoModel.append(data)
+                        }
+                    })
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                case .failure(let error):
+                    self.displayError(error: error.localizedDescription)
+                }
+            }
+        })
+    }
+    
+    func fetchDataFromViewModel() {
+        viewModel.fetchUsersDataFromServiceClass(completion: {[weak self] result in
+            if let self = self {
+                switch result {
+                case .success(let usersData):
+                    self.usersProfile = usersData
+                    DispatchQueue.main.async {
+                        self.users_name.text = self.usersProfile?.name
+                        self.userName.text = self.usersProfile?.username
+                        self.usersBio.text = self.usersProfile?.bio
+                        self.view.downloadImage(with: self.usersProfile?.photo ?? "", images: self.usersProfileImage)
+                    }
+                case .failure(let error):
+                    self.displayError(error: error.localizedDescription)
+                }
+            }
+        })
+    }
+    
+    func setUpTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(VideoTableViewCell.self, forCellReuseIdentifier: VideoTableViewCell.identifier)
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return UIStatusBarStyle.default
     }
 }
+
 extension MainViewController: UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredVideoModel.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: VideoTableViewCell.identifier, for: indexPath) as? VideoTableViewCell {
+            cell.setUpCell(with: filteredVideoModel[indexPath.row], indexPath: indexPath)
+            if let player = audioPlayerManager.player {
+                if player.rate == 0 {
+                    player.pause()
+                    audioPlayerManager.mute_unmute_Video(volume: 0)
+                }
+            }
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        500
+    }
+}
+
+extension MainViewController: UITableViewDelegate {
+    
+    //MARK: - Scrolling Config
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0 {
+            self.headerHeight.constant += abs(scrollView.contentOffset.y)
+        } else if scrollView.contentOffset.y > 0 && self.headerHeight.constant >= 0 {
+            self.headerHeight.constant -= scrollView.contentOffset.y/100
+            if self.headerHeight.constant < 30 {
+                self.headerHeight.constant = 0
+                self.profileImageHeight.constant = 0
+                self.segmentedControlTopConstraints.constant = 0
+                self.stackView.isHidden = true
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if self.headerHeight.constant > 50 {
+            viewModel.animateHeader(stackViewHeight: stackViewHeight, headerHeight: headerHeight, profileImageHeight: profileImageHeight, view: self.view)
+        }
+       
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if self.headerHeight.constant > 50 {
+            viewModel.animateHeader(stackViewHeight: stackViewHeight, headerHeight: headerHeight, profileImageHeight: profileImageHeight, view: self.view)
+        }
+    }
+    
+}
+
+extension MainViewController: AudioPlayerManagerDelegate {
+    
+    func audioPlayerError(error: Error) {
+        self.displayError(error: NetworkingError.invalidUrl.localizedDescription)
+    }
+    
+}
