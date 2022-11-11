@@ -9,12 +9,13 @@ import UIKit
 import FirebaseDatabase
 import Firebase
 import FirebaseFirestore
-
+import ProgressHUD
 
 class MainViewController: UIViewController {
     
     let audioPlayerManager = AudioPlayerManager()
     var filteredpersistedData = [PersistedObject]()
+    var data = [PersistedObject]()
     let viewModel = VideoPostViewModel()
     var currentId: Int = 0
     var usersProfile: UsersModel?
@@ -25,11 +26,9 @@ class MainViewController: UIViewController {
     @IBOutlet weak var usersProfileImage: UIImageView!
     @IBOutlet weak var segmentedControlTopConstraints: NSLayoutConstraint!
     @IBOutlet weak var profileImageHeight: NSLayoutConstraint!
-    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var headerView: UIStackView!
     @IBOutlet weak var segmentedControl: UISegmentedView!
     @IBOutlet weak var tableView: UITableView!
-    
-    @IBOutlet weak var stackViewHeight: NSLayoutConstraint!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var headerHeight: NSLayoutConstraint!
     
@@ -42,15 +41,8 @@ class MainViewController: UIViewController {
             editProfileButton.setImage(UIImage(named: "edit"), for: .normal)
         }
         editProfileButton.tintColor = Constants.Colors.blackColor
-//        editProfileButton.addTarget(self, action: #selector(navigateToEditProfile), for: .touchUpInside)
         return editProfileButton
     }()
-    
-//    @objc func navigateToEditProfile() {
-//        let editProfilepage = EditProfileViewController()
-//        editProfilepage.userData = self.usersProfile
-//        self.navigationController?.pushViewController(editProfilepage, animated: true)
-//    }
     
     lazy var backButton: UIButton = {
         var backButton = UIButton(frame: CGRect(x: 0, y: 0.0, width: 35, height: 35))
@@ -69,14 +61,15 @@ class MainViewController: UIViewController {
         setUpTableView()
         configureSegmentedControl(segmentedControl)
         segmentedControl.setUnderLinePosition()
-        fetcDataFromRealm()
-        fetchDataFromViewModel()
+        viewModel.fetchDataFrromServer()
+        fetchUsersDataFromServer()
         audioPlayerManager.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpNavbar()
+        ProgressHUD.show("loading...")
     }
     
     override func didReceiveMemoryWarning() {
@@ -90,29 +83,23 @@ class MainViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = leftNavItem
     }
     
-    func fetcDataFromRealm() {
-        viewModel.fetchDataServiceClass(completion: { [weak self] result in
-            if let self = self {
-                switch result {
-                case .success(let data):
-                    _ = data.map({data in
-                        if data.isVideo == true {
-                            self.filteredpersistedData.append(data)
-                        }
-                    })
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                case .failure(let error):
-                    self.displayError(error: error.localizedDescription)
+    func getDataFromCompletion() {
+        self.viewModel.completion = { [weak self] result in
+            switch result{
+            case .success(let data):
+                self?.filteredpersistedData = data
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
                 }
+            case .failure(let error):
+                ProgressHUD.dismiss()
+                self?.displayError(error: error.localizedDescription)
             }
-        })
+        }
     }
     
-    
-    
-    func fetchDataFromViewModel() {
+    func fetchUsersDataFromServer() {
+        getDataFromCompletion()
         viewModel.fetchUsersDataFromServiceClass(completion: {[weak self] result in
             if let self = self {
                 switch result {
@@ -123,8 +110,10 @@ class MainViewController: UIViewController {
                         self.userName.text = self.usersProfile?.username
                         self.usersBio.text = self.usersProfile?.bio
                         self.view.downloadImage(with: self.usersProfile?.photo ?? "", images: self.usersProfileImage)
+                        ProgressHUD.dismiss()
                     }
                 case .failure(let error):
+                    ProgressHUD.dismiss()
                     self.displayError(error: error.localizedDescription)
                 }
             }
@@ -172,30 +161,14 @@ extension MainViewController: UITableViewDelegate {
     //MARK: - Scrolling Config
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y < 0 {
-            self.headerHeight.constant += abs(scrollView.contentOffset.y)
-        } else if scrollView.contentOffset.y > 0 && self.headerHeight.constant >= 0 {
-            self.headerHeight.constant -= scrollView.contentOffset.y/100
-            if self.headerHeight.constant < 30 {
-                self.headerHeight.constant = 0
-                self.profileImageHeight.constant = 0
-                self.segmentedControlTopConstraints.constant = 0
-                self.stackViewHeight.constant = 0
-                self.view.layoutIfNeeded()
+        
+        if scrollView == tableView {
+            if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0 {
+                viewModel.animateHeaderViewToZero(headerHeight: headerHeight, profileImageHeight: profileImageHeight, view: view)
+                
+            } else {
+                viewModel.animateHeader(headerHeight: headerHeight, profileImageHeight: profileImageHeight, view: self.view)
             }
-        }
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if self.headerHeight.constant > 50 {
-            viewModel.animateHeader(stackViewHeight: stackViewHeight, headerHeight: headerHeight, profileImageHeight: profileImageHeight, view: self.view)
-        }
-       
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if self.headerHeight.constant > 50 {
-            viewModel.animateHeader(stackViewHeight: stackViewHeight, headerHeight: headerHeight, profileImageHeight: profileImageHeight, view: self.view)
         }
     }
     

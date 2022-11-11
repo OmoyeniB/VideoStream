@@ -33,7 +33,6 @@ extension UIView {
         let outputFormatter = DateFormatter()
         outputFormatter.dateFormat = "MMM d, h:mm a."
         let showDate = inputFormatter.string(from: date)
-        let dateToString = inputFormatter.date(from: showDate)
         let resultString = outputFormatter.string(from: date)
         return resultString
     }
