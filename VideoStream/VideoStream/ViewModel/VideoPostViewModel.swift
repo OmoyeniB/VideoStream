@@ -60,7 +60,7 @@ final class VideoPostViewModel {
     func animateHeader(stackViewHeight: NSLayoutConstraint, headerHeight: NSLayoutConstraint, profileImageHeight: NSLayoutConstraint, view: UIView) {
         DispatchQueue.main.async {
             headerHeight.constant = 160
-            stackViewHeight.constant = 81
+            stackViewHeight.constant = 88
             profileImageHeight.constant = 60
             UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                view.layoutIfNeeded()

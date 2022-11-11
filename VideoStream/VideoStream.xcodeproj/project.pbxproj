@@ -13,7 +13,6 @@
 		5841D3C22919077D00AEA726 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5841D3C02919077D00AEA726 /* MainViewController.storyboard */; };
 		5841D3C42919077F00AEA726 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5841D3C32919077F00AEA726 /* Assets.xcassets */; };
 		5841D3C72919077F00AEA726 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5841D3C52919077F00AEA726 /* LaunchScreen.storyboard */; };
-		5841D3CF2919421B00AEA726 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5841D3CE2919421B00AEA726 /* HeaderView.swift */; };
 		586CCBC4291A989F008FF048 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586CCBC2291A989F008FF048 /* VideoTableViewCell.swift */; };
 		5887AF3B291AAFE8003C75F7 /* SegmetedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5887AF3A291AAFE8003C75F7 /* SegmetedControl.swift */; };
 		5887AF3D291ABAD4003C75F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5887AF3C291ABAD4003C75F7 /* GoogleService-Info.plist */; };
@@ -34,6 +33,7 @@
 		5887AF67291C1909003C75F7 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5887AF66291C1909003C75F7 /* SnapKit */; };
 		5887AF69291C7E1F003C75F7 /* UsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5887AF68291C7E1F003C75F7 /* UsersModel.swift */; };
 		58998D68291DE3EC00C532B0 /*  FetchDataFromRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58998D67291DE3EC00C532B0 /*  FetchDataFromRealm.swift */; };
+		58998D6E291E0FAC00C532B0 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 58998D6D291E0FAC00C532B0 /* ProgressHUD */; };
 		58AF1E4C291D010500B54C69 /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58AF1E4B291D010500B54C69 /* ColorAssets.xcassets */; };
 		58AF1E4F291D4FE100B54C69 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 58AF1E4E291D4FE100B54C69 /* IQKeyboardManagerSwift */; };
 		58AF1E52291DC84300B54C69 /* PersistenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF1E51291DC84300B54C69 /* PersistenceProtocol.swift */; };
@@ -51,7 +51,6 @@
 		5841D3C32919077F00AEA726 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5841D3C62919077F00AEA726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5841D3C82919077F00AEA726 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5841D3CE2919421B00AEA726 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		586CCBC2291A989F008FF048 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		5887AF3A291AAFE8003C75F7 /* SegmetedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmetedControl.swift; sourceTree = "<group>"; };
 		5887AF3C291ABAD4003C75F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -79,6 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5887AF4A291AF250003C75F7 /* FirebaseDatabase in Frameworks */,
+				58998D6E291E0FAC00C532B0 /* ProgressHUD in Frameworks */,
 				5887AF48291AF250003C75F7 /* FirebaseAnalytics in Frameworks */,
 				58AF1E55291DC8B100B54C69 /* RealmSwift in Frameworks */,
 				5887AF51291BA74F003C75F7 /* SDWebImage in Frameworks */,
@@ -116,6 +116,7 @@
 				5841D3D22919422E00AEA726 /* View */,
 				5841D3D12919422600AEA726 /* ViewModel */,
 				5841D3D02919422000AEA726 /* Model */,
+				5841D3C52919077F00AEA726 /* LaunchScreen.storyboard */,
 				5841D3C32919077F00AEA726 /* Assets.xcassets */,
 				58AF1E4B291D010500B54C69 /* ColorAssets.xcassets */,
 				5841D3C82919077F00AEA726 /* Info.plist */,
@@ -146,9 +147,9 @@
 			children = (
 				5887AF5C291BDE15003C75F7 /* EditProfileViewController.swift */,
 				5887AF5D291BDE15003C75F7 /* EditProfileViewController.xib */,
-				586CCBC1291A9828008FF048 /* Cell */,
 				5841D3BE2919077D00AEA726 /* MainViewController.swift */,
-				5841D3CE2919421B00AEA726 /* HeaderView.swift */,
+				5841D3C02919077D00AEA726 /* MainViewController.storyboard */,
+				586CCBC1291A9828008FF048 /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -165,8 +166,6 @@
 		5841D3D42919428B00AEA726 /* Storyboardables */ = {
 			isa = PBXGroup;
 			children = (
-				5841D3C52919077F00AEA726 /* LaunchScreen.storyboard */,
-				5841D3C02919077D00AEA726 /* MainViewController.storyboard */,
 			);
 			path = Storyboardables;
 			sourceTree = "<group>";
@@ -237,6 +236,7 @@
 				5887AF66291C1909003C75F7 /* SnapKit */,
 				58AF1E4E291D4FE100B54C69 /* IQKeyboardManagerSwift */,
 				58AF1E54291DC8B100B54C69 /* RealmSwift */,
+				58998D6D291E0FAC00C532B0 /* ProgressHUD */,
 			);
 			productName = VideoStream;
 			productReference = 5841D3B72919077D00AEA726 /* VideoStream.app */;
@@ -272,6 +272,7 @@
 				5887AF65291C1909003C75F7 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				58AF1E4D291D4FE100B54C69 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				58AF1E53291DC8B100B54C69 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				58998D6C291E0FAC00C532B0 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 			);
 			productRefGroup = 5841D3B82919077D00AEA726 /* Products */;
 			projectDirPath = "";
@@ -315,7 +316,6 @@
 				58AF1E52291DC84300B54C69 /* PersistenceProtocol.swift in Sources */,
 				5887AF4E291AF281003C75F7 /* VideoModel.swift in Sources */,
 				5841D3BD2919077D00AEA726 /* SceneDelegate.swift in Sources */,
-				5841D3CF2919421B00AEA726 /* HeaderView.swift in Sources */,
 				5887AF59291BDB62003C75F7 /* CustomError.swift in Sources */,
 				5887AF53291BA78F003C75F7 /* UIView+Extensions.swift in Sources */,
 				5887AF55291BACA4003C75F7 /* AudioPlayerManager.swift in Sources */,
@@ -398,7 +398,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -452,7 +452,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -478,7 +478,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -508,7 +508,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -570,6 +570,14 @@
 				kind = branch;
 			};
 		};
+		58998D6C291E0FAC00C532B0 /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.0.0;
+			};
+		};
 		58AF1E4D291D4FE100B54C69 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
@@ -613,6 +621,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5887AF65291C1909003C75F7 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		58998D6D291E0FAC00C532B0 /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58998D6C291E0FAC00C532B0 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
 		};
 		58AF1E4E291D4FE100B54C69 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
