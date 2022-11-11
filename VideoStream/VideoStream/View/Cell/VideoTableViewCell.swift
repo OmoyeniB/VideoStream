@@ -13,6 +13,8 @@ class VideoTableViewCell: UITableViewCell {
     let audioPlayerManager = AudioPlayerManager()
     static let identifier = "VideoTableViewCell"
     
+   let activityIndicator = UIActivityIndicatorView()
+      
     lazy var profileImage: UIImageView = {
         var profileImage = UIImageView()
         profileImage.contentMode = .scaleAspectFill
@@ -60,6 +62,7 @@ class VideoTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setContraints()
+        activityIndicator.startAnimating()
     }
     
     required init?(coder: NSCoder) {
@@ -85,6 +88,7 @@ class VideoTableViewCell: UITableViewCell {
         contentView.addSubview(datePosted)
         contentView.addSubview(postDescription)
         contentView.addSubview(videoView)
+       videoView.addSubview(activityIndicator)
         contentView.addSubview(volumeButton)
         
         profileImage.snp.makeConstraints({ make in
@@ -114,6 +118,12 @@ class VideoTableViewCell: UITableViewCell {
             make.right.equalTo(contentView.snp.right).inset(20)
             make.left.equalTo(contentView.snp.left).offset(20)
             make.bottom.equalTo(contentView.snp.bottom).inset(10)
+        })
+        
+        activityIndicator.snp.makeConstraints({make in
+            make.centerX.equalTo(videoView.snp.centerX)
+            make.centerY.equalTo(videoView.snp.centerY)
+            make.height.width.equalTo(40)
         })
         
         volumeButton.snp.makeConstraints({make in
