@@ -85,7 +85,6 @@ class VideoTableViewCell: UITableViewCell {
         contentView.addSubview(datePosted)
         contentView.addSubview(postDescription)
         contentView.addSubview(videoView)
-      
         contentView.addSubview(volumeButton)
         
         profileImage.snp.makeConstraints({ make in
@@ -124,7 +123,7 @@ class VideoTableViewCell: UITableViewCell {
         })
     }
     
-    func setUpCell(with videoModel: VideoModel, indexPath: IndexPath) {
+    func setUpCell(with videoModel: PersistedObject, indexPath: IndexPath) {
         datePosted.text = contentView.getFormattedDate(string: String(videoModel.timeStamp), formatter: "yyyy-MM-dd HH:mm:ss Z")
         contentView.downloadImage(with: videoModel.photo, images: profileImage)
         userName.text = videoModel.userName

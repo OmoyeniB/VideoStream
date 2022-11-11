@@ -14,7 +14,7 @@ import FirebaseFirestore
 class MainViewController: UIViewController {
     
     let audioPlayerManager = AudioPlayerManager()
-    var filteredVideoModel = [VideoModel]()
+    var filteredpersistedData = [PersistedObject]()
     let viewModel = VideoPostViewModel()
     var currentId: Int = 0
     var usersProfile: UsersModel?
@@ -42,15 +42,15 @@ class MainViewController: UIViewController {
             editProfileButton.setImage(UIImage(named: "edit"), for: .normal)
         }
         editProfileButton.tintColor = Constants.Colors.blackColor
-        editProfileButton.addTarget(self, action: #selector(navigateToEditProfile), for: .touchUpInside)
+//        editProfileButton.addTarget(self, action: #selector(navigateToEditProfile), for: .touchUpInside)
         return editProfileButton
     }()
     
-    @objc func navigateToEditProfile() {
-        let editProfilepage = EditProfileViewController()
-        editProfilepage.userData = self.usersProfile
-        self.navigationController?.pushViewController(editProfilepage, animated: true)
-    }
+//    @objc func navigateToEditProfile() {
+//        let editProfilepage = EditProfileViewController()
+//        editProfilepage.userData = self.usersProfile
+//        self.navigationController?.pushViewController(editProfilepage, animated: true)
+//    }
     
     lazy var backButton: UIButton = {
         var backButton = UIButton(frame: CGRect(x: 0, y: 0.0, width: 35, height: 35))
@@ -67,9 +67,9 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         segmentedControl.isEnabled = false
         setUpTableView()
-        viewModel.configureSegmentedControl(segmentedControl)
+        configureSegmentedControl(segmentedControl)
         segmentedControl.setUnderLinePosition()
-        fetchDataFromFireBase()
+        fetcDataFromRealm()
         fetchDataFromViewModel()
         audioPlayerManager.delegate = self
     }
@@ -90,14 +90,14 @@ class MainViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = leftNavItem
     }
     
-    func fetchDataFromFireBase() {
+    func fetcDataFromRealm() {
         viewModel.fetchDataServiceClass(completion: { [weak self] result in
             if let self = self {
                 switch result {
                 case .success(let data):
                     _ = data.map({data in
                         if data.isVideo == true {
-                            self.filteredVideoModel.append(data)
+                            self.filteredpersistedData.append(data)
                         }
                     })
                     DispatchQueue.main.async {
@@ -109,6 +109,8 @@ class MainViewController: UIViewController {
             }
         })
     }
+    
+    
     
     func fetchDataFromViewModel() {
         viewModel.fetchUsersDataFromServiceClass(completion: {[weak self] result in
@@ -143,12 +145,12 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredVideoModel.count
+        return filteredpersistedData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: VideoTableViewCell.identifier, for: indexPath) as? VideoTableViewCell {
-            cell.setUpCell(with: filteredVideoModel[indexPath.row], indexPath: indexPath)
+            cell.setUpCell(with: filteredpersistedData[indexPath.row], indexPath: indexPath)
             if let player = audioPlayerManager.player {
                 if player.rate == 0 {
                     player.pause()
@@ -178,7 +180,7 @@ extension MainViewController: UITableViewDelegate {
                 self.headerHeight.constant = 0
                 self.profileImageHeight.constant = 0
                 self.segmentedControlTopConstraints.constant = 0
-                self.stackView.isHidden = true
+                self.stackViewHeight.constant = 0
                 self.view.layoutIfNeeded()
             }
         }

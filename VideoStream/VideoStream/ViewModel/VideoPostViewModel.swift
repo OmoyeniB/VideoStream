@@ -9,21 +9,39 @@ import UIKit
 
 final class VideoPostViewModel {
     
-    //    private let firebaseManager =
+    let persistence = PersistenceStore()
+    let fetchDataFromRealm = FetchDataFromRealm().data
+    var persitedData = [PersistedObject]()
     
-    //    init(firebaseManager: FirebaseManager) {
-    //        self.firebaseManager = firebaseManager
-    //    }
-    
-    func fetchDataServiceClass(completion: @escaping ((Result<[VideoModel], Error>) -> Void)) {
-        FirebaseManager.shared.fetchDataFromFireBase(completionHandler: { result in
-            switch result {
-            case .failure(let error):
-                completion(.failure(error))
-            case .success(let data):
-                completion(.success(data))
-            }
+    func saveDataToRealm(data: [VideoModel]) {
+        for i in data {
+            let itemsTosave = PersistedObject()
+            itemsTosave.decsription = i.decsription
+            itemsTosave.photo = i.photo
+            itemsTosave.userID = i.userID
+            itemsTosave.timeStamp = i.timeStamp
+            itemsTosave.userName = i.userName
+            itemsTosave.videoLink = i.videoLink
+            itemsTosave.isVideo = i.isVideo
             
+            if !fetchDataFromRealm.contains(where: {$0.userID == itemsTosave.userID}) {
+                persistence.save(items: itemsTosave)
+                persitedData.append(itemsTosave)
+            }
+        }
+    }
+    
+    func fetchDataServiceClass(completion: @escaping ((Result<[PersistedObject], Error>) -> Void)) {
+        FirebaseManager.shared.fetchDataFromFireBase(completionHandler: { [weak self] result in
+            if let self = self {
+                switch result {
+                case .failure(let error):
+                    completion(.failure(error))
+                case .success(let data):
+                    self.saveDataToRealm(data: data)
+                    completion(.success(self.fetchDataFromRealm))
+                }
+            }
         })
     }
     
@@ -47,13 +65,6 @@ final class VideoPostViewModel {
                view.layoutIfNeeded()
             }, completion: nil)
         }
-    }
-    
-    func configureSegmentedControl(_ segmentedControl: UISegmentedView) {
-        segmentedControl.frame = CGRect(x: segmentedControl.frame.minX, y:
-                                            segmentedControl.frame.minY,
-                                        width: segmentedControl.frame.width, height: 30)
-        segmentedControl.highlightSelectedSegment()
     }
     
 }
