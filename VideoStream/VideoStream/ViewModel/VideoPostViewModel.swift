@@ -12,7 +12,7 @@ final class VideoPostViewModel {
     let persistence = PersistenceStore()
     let fetchDataFromRealm = FetchDataFromRealm().data
     var persitedData = [PersistedObject]()
-    
+    var completion: ((Result<[PersistedObject], Error>)-> Void)?
     func saveDataToRealm(data: [VideoModel]) {
         for i in data {
             let itemsTosave = PersistedObject()
@@ -24,22 +24,23 @@ final class VideoPostViewModel {
             itemsTosave.videoLink = i.videoLink
             itemsTosave.isVideo = i.isVideo
             
-            if !fetchDataFromRealm.contains(where: {$0.userID == itemsTosave.userID}) {
+            if !fetchDataFromRealm.contains(where: {$0.userID == itemsTosave.userID}) &&  itemsTosave.isVideo == true  {
                 persistence.save(items: itemsTosave)
                 persitedData.append(itemsTosave)
+                self.completion?(.success(FetchDataFromRealm().data))
             }
         }
     }
     
-    func fetchDataServiceClass(completion: @escaping ((Result<[PersistedObject], Error>) -> Void)) {
+    func fetchDataFrromServer() {
         FirebaseManager.shared.fetchDataFromFireBase(completionHandler: { [weak self] result in
             if let self = self {
                 switch result {
                 case .failure(let error):
-                    completion(.failure(error))
+                    self.completion?(.failure(error))
                 case .success(let data):
                     self.saveDataToRealm(data: data)
-                    completion(.success(self.fetchDataFromRealm))
+                    self.completion?(.success(FetchDataFromRealm().data))
                 }
             }
         })
