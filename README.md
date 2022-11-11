@@ -50,10 +50,12 @@ $ cd Github Search
 
 # Screenshots
 - dark mode
-/Users/sharon-omoyeni/Desktop/Simulator Screen Shot - iPhone 14 Pro Max - 2022-11-11 at 04.18.11.png
+![Simulator Screen Shot - iPhone 14 Pro Max - 2022-11-11 at 04 18 11](https://user-images.githubusercontent.com/92518636/201256514-a5c252e1-63b9-42eb-9ff6-0599340f515b.png)
+
 
 - light mode
-/Users/sharon-omoyeni/Desktop/Simulator Screen Shot - iPhone 14 Pro Max - 2022-11-11 at 04.18.32.png
+![Simulator Screen Shot - iPhone 14 Pro Max - 2022-11-11 at 04 18 32](https://user-images.githubusercontent.com/92518636/201256544-57697012-0e07-4831-9cf8-349188d97a36.png)
 
 - animated header
-/Users/sharon-omoyeni/Desktop/Simulator Screen Recording - iPhone 14 Pro Max - 2022-11-11 at 03.46.27.mp4
+https://user-images.githubusercontent.com/92518636/201256592-3012d81e-27e6-4b09-9789-67441f6c70ab.mp4
+
