@@ -33,6 +33,7 @@
 		5887AF64291BF10F003C75F7 /* VideoPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5887AF63291BF10F003C75F7 /* VideoPostViewModel.swift */; };
 		5887AF67291C1909003C75F7 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5887AF66291C1909003C75F7 /* SnapKit */; };
 		5887AF69291C7E1F003C75F7 /* UsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5887AF68291C7E1F003C75F7 /* UsersModel.swift */; };
+		58998D68291DE3EC00C532B0 /*  FetchDataFromRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58998D67291DE3EC00C532B0 /*  FetchDataFromRealm.swift */; };
 		58AF1E4C291D010500B54C69 /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58AF1E4B291D010500B54C69 /* ColorAssets.xcassets */; };
 		58AF1E4F291D4FE100B54C69 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 58AF1E4E291D4FE100B54C69 /* IQKeyboardManagerSwift */; };
 		58AF1E52291DC84300B54C69 /* PersistenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF1E51291DC84300B54C69 /* PersistenceProtocol.swift */; };
@@ -65,6 +66,7 @@
 		5887AF60291BEABF003C75F7 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		5887AF63291BF10F003C75F7 /* VideoPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPostViewModel.swift; sourceTree = "<group>"; };
 		5887AF68291C7E1F003C75F7 /* UsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersModel.swift; sourceTree = "<group>"; };
+		58998D67291DE3EC00C532B0 /*  FetchDataFromRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " FetchDataFromRealm.swift"; sourceTree = "<group>"; };
 		58AF1E4B291D010500B54C69 /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
 		58AF1E51291DC84300B54C69 /* PersistenceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceProtocol.swift; sourceTree = "<group>"; };
 		58AF1E56291DC8ED00B54C69 /* PersistedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistedObject.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				58AF1E51291DC84300B54C69 /* PersistenceProtocol.swift */,
 				58AF1E56291DC8ED00B54C69 /* PersistedObject.swift */,
 				58AF1E58291DC98A00B54C69 /* PersistenceStore.swift */,
+				58998D67291DE3EC00C532B0 /*  FetchDataFromRealm.swift */,
 			);
 			path = PersistenceStore;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5887AF5E291BDE15003C75F7 /* EditProfileViewController.swift in Sources */,
+				58998D68291DE3EC00C532B0 /*  FetchDataFromRealm.swift in Sources */,
 				5841D3BF2919077D00AEA726 /* MainViewController.swift in Sources */,
 				5887AF61291BEABF003C75F7 /* FirebaseManager.swift in Sources */,
 				58AF1E59291DC98A00B54C69 /* PersistenceStore.swift in Sources */,
